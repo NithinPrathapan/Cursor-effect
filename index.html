@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ring</title>
+  </head>
+  <body>
+    <div class="content">
+      <h1>Lorem ipsum dolor sit amet consectetur.</h1>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. A ratione
+        beatae vel consequatur, vero, minima qui earum autem laborum inventore
+        omnis excepturi` quasi dolore itaque assumenda eum. Illum explicabo
+        vitae ad quibusdam! Sint molestiae possimus eius! Aperiam illo porro
+        voluptatem sed et, deleniti at voluptatibus aut nisi praesentium vero,
+        dolor sapiente id quidem, ad nobis? Reprehenderit!
+      </p>
+    </div>
+    <div class="cursor2"></div>
+    <script>
+      var cursor2 = document.querySelector(".cursor2");
+
+      var mouseX = 0,
+        mouseY = 0;
+      var ringX = 0,
+        ringY = 0;
+      document.addEventListener("mousemove", function (e) {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+
+        cursor2.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+      });
+
+      function animateRing() {
+        ringX += (mouseX - ringX) * 0.05;
+        ringY += (mouseY - ringY) * 0.05;
+
+        cursor2.style.transform = `translate(${ringX - 25}px, ${ringY - 25}px)`; // Adjust for ring center
+
+        requestAnimationFrame(animateRing);
+      }
+
+      animateRing();
+    </script>
+  </body>
+</html>
